@@ -21,7 +21,7 @@ console.log("end") */
 
 //callBack
 
-console.log("start")
+/* console.log("start")
 
 function getName(rollnumber, callback){
        setTimeout(()=>{
@@ -44,8 +44,44 @@ getName(102,(name)=>{
     console.log(name);
     getHobbies(name,(hobbies)=>{
         console.log(hobbies);
-        
     })
 })
+
+console.log("end")  */
+
+
+
+//converting callback hell into promises
+
+console.log("start")
+
+function getName(rollnumber){
+    return new Promise((resolve,reject)=>{
+        setTimeout(()=>{
+           //send rollnumber to server and against that rollnumber ,get student name from server
+           let name = "John"
+           resolve(name)
+       },2000) 
+    })
+       
+}
+function getHobbies(name){
+    return new Promise((resolve,reject)=>{
+         setTimeout(()=>{
+        //sending request to server to get student's hobbies
+        let hobbies = ["reading","coding"]
+        resolve(hobbies)
+    },2000)
+    })
+   
+}
+
+
+//Promise
+getName(105)
+.then(name=>getHobbies(name))
+.then(hobbies=>console.log(hobbies))
+.catch(err=>console.log(err))
+
 
 console.log("end") 
