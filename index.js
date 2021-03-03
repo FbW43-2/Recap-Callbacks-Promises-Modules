@@ -144,4 +144,4 @@ async function FetchData(){
     } catch(err){console.log(err)}
 }
 
-FetchData()
+/* FetchData() */
